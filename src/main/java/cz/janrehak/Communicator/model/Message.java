@@ -19,6 +19,11 @@ public class Message {
     @JoinColumn(name = "author")
     private User author;
 
+    @OneToOne
+    @JoinColumn(name = "topic")
+    private Topic topic;
+
+
     private LocalDateTime createdTime;
 
     public Long getId() {

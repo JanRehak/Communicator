@@ -32,7 +32,7 @@ public class MessageServiceImpl implements MessageService {
         //set time of creation
         message.setCreatedTime(LocalDateTime.now());
 
-        //TODO set author
+        
         message.setAuthor(
                 userRepository.findByName(principal.getName())
                         .orElseThrow(() -> new NotFoundException("Author with supplied name not found"))

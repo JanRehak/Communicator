@@ -18,9 +18,9 @@ public class HtmlController {
         return "users.html";
     }
 
-    @GetMapping("/articles")
-    public String articles() {
-        return "articles.html";
+    @GetMapping("/messages")
+    public String messages() {
+        return "messages.html";
     }
 
 }
