@@ -17,6 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.Random;
 import java.util.Set;
@@ -27,7 +28,7 @@ public class MyInitializer implements InitializingBean {
 
     static final Random randomNumberGenerator = new Random();
 
-//    @Autowired MessageService messageService;
+    @Autowired MessageService messageService;
     @Autowired UserService userService;
     @Autowired RoleRepository roleRepository;
 //    @Autowired PasswordEncoder passwordEncoder;
@@ -50,6 +51,17 @@ public class MyInitializer implements InitializingBean {
         //Save roles into database
         roleRepository.save(adminRole);
         roleRepository.save(userRole);
+
+        //creation of message
+        Message adminMessage = new Message();
+        adminMessage.setMessage("Admin message. 111111111111111");
+        Message adminMessage2 = new Message();
+        adminMessage.setMessage("Admin 222222222222222222222222.");
+        Message adminMessage3 = new Message();
+        adminMessage.setMessage("Admin 333333333333333333333333.");
+
+        //save Messages into dtb
+        messageService.saveMessage(adminMessage, null);
 
         //Generate admin: Magdalena if not present already
         if (!userService.isUserPresent("Magdalena")) {

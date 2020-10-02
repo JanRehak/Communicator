@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class MessageServiceImpl implements MessageService {
@@ -19,16 +20,9 @@ public class MessageServiceImpl implements MessageService {
 @Autowired MessageRepository messageRepository;
 @Autowired UserRepository userRepository;
 
-
-//    @Override
-//    public Message saveMessage(Message message, User user) {
-//        return null;
-//    }
-
-
     //theoretially the principal can be obsolid by getting the logged user from user
     @Override
-    public Message saveMessage(Message message, User user, Principal principal) {
+    public Message saveMessage(Message message,  Principal principal) {
 
         message.setCreatedTime(LocalDateTime.now());
         message.setAuthor(
@@ -39,6 +33,12 @@ public class MessageServiceImpl implements MessageService {
         //TODO if invalid input,then
 
         return messageRepository.save(message);
+    }
+
+
+    @Override
+    public void deleteMessage(Message message, Principal principal) {
+        messageRepository.delete(message);
     }
 
     @Override

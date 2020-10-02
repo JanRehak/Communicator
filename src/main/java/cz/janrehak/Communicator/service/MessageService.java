@@ -6,12 +6,13 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import java.security.Principal;
+import java.util.Optional;
 
 public interface MessageService {
 
 //    Message saveMessage(Message message, User user);
-    Message saveMessage(Message message, User user, Principal principal);
-
+    Message saveMessage(Message message, Principal principal);
+    void deleteMessage(Message message, Principal principal);
 
     Iterable <Message> listAll();
 }

@@ -29,4 +29,9 @@ public class MessageController {
         return messageService.listAll();
     }
 
+    @DeleteMapping("/{messageId}")
+    public void deleteMessage(@RequestBody Message message, Principal principal) {
+        messageService.deleteMessage(message, principal);
+    }
+
 }
