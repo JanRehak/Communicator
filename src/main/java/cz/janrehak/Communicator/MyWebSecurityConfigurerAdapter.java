@@ -66,6 +66,13 @@ public class MyWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().anyRequest().authenticated()
                 .and().httpBasic()
+                .and().formLogin()
+//				.failureUrl("fail.html")
+//				.defaultSuccessUrl("articles")
+//				.loginPage("index.html")
+                .and().logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
                 .and().csrf().disable();
 //        http.authorizeRequests().antMatchers("/").permitAll();
 

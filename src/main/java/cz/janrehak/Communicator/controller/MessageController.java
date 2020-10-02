@@ -14,7 +14,7 @@ import java.security.Principal;
 
 @RestController
 //@Secured({"ROLE_ADMIN", "ROLE_USER"})
-@RequestMapping("/api/message")
+@RequestMapping("/api/messages")
 public class MessageController {
 
     @Autowired MessageService messageService;

@@ -25,18 +25,18 @@ public class MessageServiceImpl implements MessageService {
 //        return null;
 //    }
 
+
+    //theoretially the principal can be obsolid by getting the logged user from user
     @Override
     public Message saveMessage(Message message, User user, Principal principal) {
 
-
-        //set time of creation
         message.setCreatedTime(LocalDateTime.now());
-
-        
         message.setAuthor(
                 userRepository.findByName(principal.getName())
                         .orElseThrow(() -> new NotFoundException("Author with supplied name not found"))
         );
+
+        //TODO if invalid input,then
 
         return messageRepository.save(message);
     }

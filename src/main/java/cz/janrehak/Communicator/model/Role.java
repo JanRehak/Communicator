@@ -17,7 +17,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    //napsat list roli final
+    //TODO define FINAL roles??
 //    private final  List<String> roles = new List<>();
 
 
