@@ -51,16 +51,13 @@ public class MyInitializer implements InitializingBean {
         roleRepository.save(adminRole);
         roleRepository.save(userRole);
 
-        //TODO autoCheck ADMIN
-//        if (!userService.verifyUser("administrator")) {
-//            userService.createUser(new User("administrator", "admin", roleRepository.findByName("ADMIN")));
-//        }
+        //Generate admin: Magdalena if not present already
+        if (!userService.isUserPresent("Magdalena")) {
+            userService.createUser(new User("Magdalena", "Nova", "kozenka", roleRepository.findByName("ADMIN"),
+                    "magda"));        }
 
 
-        //Creation of our admin - Magdalena
-        //TODO vytvorit funkci pro check zda li je admin pritomen. zamezi vice cetnym admin stejnym uctum pri opakovanem spousteni
-        userService.createUser(new User("Magdalena", "Nova", "kozenka", roleRepository.findByName("ADMIN"),
-                "magda"));
+        //sany
 //        userService.createUser(new User("Sany", "Bourak", "matros", roleRepository.findAll(), "sany"));
 
 

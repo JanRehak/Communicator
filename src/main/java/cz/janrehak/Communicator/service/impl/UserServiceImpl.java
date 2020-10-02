@@ -50,5 +50,13 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+    @Override
+    public Boolean isUserPresent(String userName) {
+        if (userRepository.findByName(userName).isPresent()) {
+            return true;
+        }
+        else return false;
+    }
+
 
 }
