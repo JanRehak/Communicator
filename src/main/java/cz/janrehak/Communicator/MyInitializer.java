@@ -51,12 +51,14 @@ public class MyInitializer implements InitializingBean {
         roleRepository.save(userRole);
 
         //Creation of our admin - Magdalena
+        //TODO vytvorit funkci pro check zda li je admin pritomen. zamezi vice cetnym admin stejnym uctum pri opakovanem spousteni
         userService.createUser(new User("Magdalena", "Nova", "kozenka", roleRepository.findAll(), "magda"));
+        userService.createUser(new User("Sany", "Bourak", "matros", roleRepository.findAll(), "sany"));
 
 
-        for (int i = 0; i<randomNumberGenerator.nextInt(20); i++) {
-            log.info("MATRIX IS LOADING");
-        }
+//        for (int i = 0; i<randomNumberGenerator.nextInt(20); i++) {
+//            log.info("MATRIX IS LOADING");
+//        }
 
         // fetch all users
         log.info("Users found with getAllUsers():");
