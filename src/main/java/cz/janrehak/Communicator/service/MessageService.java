@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface MessageService {
 
 //    Message saveMessage(Message message, User user);
-    Message saveMessage(Message message, Principal principal);
+    Message saveMessage(Message message,  User user, Principal principal);
     void deleteMessage(Message message, Principal principal);
 
     Iterable <Message> listAll();

@@ -1,6 +1,7 @@
 package cz.janrehak.Communicator;
 
 
+import cz.janrehak.Communicator.exception.NotFoundException;
 import cz.janrehak.Communicator.model.Message;
 import cz.janrehak.Communicator.model.Role;
 import cz.janrehak.Communicator.model.User;
@@ -9,6 +10,7 @@ import cz.janrehak.Communicator.service.MessageService;
 import cz.janrehak.Communicator.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.NotReadablePropertyException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -60,13 +62,15 @@ public class MyInitializer implements InitializingBean {
         Message adminMessage3 = new Message();
         adminMessage.setMessage("Admin 333333333333333333333333.");
 
-        //save Messages into dtb
-        messageService.saveMessage(adminMessage, null);
+
 
         //Generate admin: Magdalena if not present already
         if (!userService.isUserPresent("Magdalena")) {
             userService.createUser(new User("Magdalena", "Nova", "kozenka", roleRepository.findByName("ADMIN"),
                     "magda"));        }
+
+        //save Messages into dtb
+//        messageService.saveMessage(adminMessage, null, null);
 
 
         //sany
