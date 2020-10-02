@@ -10,19 +10,20 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @RestController
+//@Secured({"ROLE_ADMIN", "ROLE_USER"})
 @RequestMapping("/api/message")
 public class MessageController {
 
     @Autowired MessageService messageService;
 
-    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @PostMapping
-    public Message postMessage(@RequestBody Message message, @AuthenticationPrincipal User user) {
-       return messageService.saveMessage(message, user);
+    public Message postMessage(@RequestBody Message message, @AuthenticationPrincipal User user, Principal principal) {
+       return messageService.saveMessage(message, user, principal);
     }
 
-    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping
     public Iterable<Message> get() {
         return messageService.listAll();

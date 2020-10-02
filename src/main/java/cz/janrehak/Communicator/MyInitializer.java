@@ -27,9 +27,10 @@ public class MyInitializer implements InitializingBean {
 
     static final Random randomNumberGenerator = new Random();
 
-    @Autowired MessageService messageService;
+//    @Autowired MessageService messageService;
     @Autowired UserService userService;
     @Autowired RoleRepository roleRepository;
+//    @Autowired PasswordEncoder passwordEncoder;
 
     //I get the logger that help me with the message while the app is loading
     private static final Logger log = LoggerFactory.getLogger(MyInitializer.class);
@@ -50,10 +51,17 @@ public class MyInitializer implements InitializingBean {
         roleRepository.save(adminRole);
         roleRepository.save(userRole);
 
+        //TODO autoCheck ADMIN
+//        if (!userService.verifyUser("administrator")) {
+//            userService.createUser(new User("administrator", "admin", roleRepository.findByName("ADMIN")));
+//        }
+
+
         //Creation of our admin - Magdalena
         //TODO vytvorit funkci pro check zda li je admin pritomen. zamezi vice cetnym admin stejnym uctum pri opakovanem spousteni
-        userService.createUser(new User("Magdalena", "Nova", "kozenka", roleRepository.findAll(), "magda"));
-        userService.createUser(new User("Sany", "Bourak", "matros", roleRepository.findAll(), "sany"));
+        userService.createUser(new User("Magdalena", "Nova", "kozenka", roleRepository.findByName("ADMIN"),
+                "magda"));
+//        userService.createUser(new User("Sany", "Bourak", "matros", roleRepository.findAll(), "sany"));
 
 
 //        for (int i = 0; i<randomNumberGenerator.nextInt(20); i++) {

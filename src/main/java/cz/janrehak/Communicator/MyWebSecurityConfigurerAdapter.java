@@ -30,43 +30,36 @@ import java.util.stream.Collectors;
 public class MyWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 
     @Autowired UserRepository userRepository;
-    @Autowired PasswordEncoder passwordEncoder;
+//    @Autowired PasswordEncoder passwordEncoder;
     @Autowired UserService userService;
 
 
-//        @Bean
-//    public UserDetailsService userDetailsService() {
-//        return new UserDetailsService() {
-//            @Override
-//            @Transactional(readOnly = true)
-//            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//                cz.janrehak.Communicator.model.User user = userRepository.findByName(username)
-//                        .orElseThrow(() -> new UsernameNotFoundException(username));
-//
-//                return User.builder()
-//                        .username(user.getName())
-//                        .password(user.getPassword())
-//                        .authorities(
-//                                user.getRoles().stream().map(Role::getName).map(roleName -> new SimpleGrantedAuthority("ROLE_" + roleName)).collect(Collectors.toSet())
-//                        )
-//                        .build();
-//            }
-//        };
-//    }
-
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsService() {
+            @Override
+            @Transactional(readOnly = true)
+            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+                cz.janrehak.Communicator.model.User user = userRepository.findByName(username)
+                        .orElseThrow(() -> new UsernameNotFoundException(username));
+
+                return User.builder()
+                        .username(user.getName())
+                        .password(user.getPassword())
+                        .authorities(
+                                user.getRoles().stream().map(Role::getName).map(roleName -> new
+                                        SimpleGrantedAuthority("ROLE_" + roleName)).collect(Collectors.toSet())
+                        )
+                        .build();
+            }
+        };
     }
 
 
 
-    //nahrazuji to UserDetailsService
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("Magdalena")
-                .password(passwordEncoder().encode("magda")).roles("USER", "ADMIN");
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     @Override
@@ -77,4 +70,39 @@ public class MyWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter
 //        http.authorizeRequests().antMatchers("/").permitAll();
 
     }
+
+
+
+    //nahrazuji to UserDetailsService
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .withUser("Magdalena")
+//                .password(passwordEncoder().encode("magda")).roles("USER", "ADMIN");
+//    }
+
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//                .anonymous()
+//                .and().authorizeRequests()
+//                .antMatchers(
+//
+//                        "/api/users**",
+//                        "/api/roles**",
+//                        "/*.css",
+//                        "/*.js"
+//                ).permitAll()
+//                .anyRequest().authenticated()
+//                .and().formLogin()
+////				.failureUrl("fail.html")
+////				.defaultSuccessUrl("articles")
+////				.loginPage("login.html")
+//                .and().logout()
+//                .logoutUrl("/logout")
+//                .logoutSuccessUrl("/")
+//                //.and().httpBasic()
+//                .and().cors()
+//                .and().csrf().disable();
+//    }
 }
