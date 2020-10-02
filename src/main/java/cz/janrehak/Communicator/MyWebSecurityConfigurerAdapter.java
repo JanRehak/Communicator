@@ -4,6 +4,7 @@ package cz.janrehak.Communicator;
 import cz.janrehak.Communicator.model.Role;
 import cz.janrehak.Communicator.repository.UserRepository;
 import cz.janrehak.Communicator.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -64,10 +65,28 @@ public class MyWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().authenticated()
+        http
+                .anonymous()
+                .and().authorizeRequests()
+                .antMatchers(
+                        "/*.js",
+                        "/*.css",
+                        "/api/message",
+                        "/api/users",
+                        "/api/test"
+                ).permitAll()
+                .anyRequest().authenticated()
+                .and().formLogin()
+                    .failureUrl("login.html")
+				    .defaultSuccessUrl("login.html")
+				    .loginPage("login.html")
+                .and().logout()
+                    .logoutUrl("login.html")
+                    .logoutSuccessUrl("/")
                 .and().httpBasic()
+                .and().cors()
                 .and().csrf().disable();
-//        http.authorizeRequests().antMatchers("/").permitAll();
+
 
     }
 
