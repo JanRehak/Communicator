@@ -22,7 +22,7 @@ public class MessageServiceImpl implements MessageService {
 
     //theoretially the principal can be obsolid by getting the logged user from user
     @Override
-    public Message saveMessage(Message message,  Principal principal) {
+    public Message saveMessage(Message message, User user, Principal principal) {
 
         message.setCreatedTime(LocalDateTime.now());
         message.setAuthor(

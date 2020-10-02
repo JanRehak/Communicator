@@ -16,4 +16,5 @@ public interface UserService {
     List<User> getAllUsers();
 
     Boolean isUserPresent(String userName);
+
 }
