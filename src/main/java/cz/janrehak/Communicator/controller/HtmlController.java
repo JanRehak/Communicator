@@ -7,18 +7,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController
+@Controller
 public class HtmlController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping("/")
     public String get() {
         return "index.html";
     }
 
-    @GetMapping("/index")
-    public String index() {
-        return "index.html";
-    }
 
     @GetMapping("/users")
     public String users() {
