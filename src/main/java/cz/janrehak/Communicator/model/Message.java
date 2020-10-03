@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.CodePointLength;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity(name = "message")
 public class Message {
@@ -19,9 +20,8 @@ public class Message {
     @JoinColumn(name = "author")
     private User author;
 
-    @OneToOne
-    @JoinColumn(name = "topic")
-    private Topic topic;
+    @ManyToMany
+    private Set<Topic> topic;
 
 
     private LocalDateTime createdTime;
@@ -56,5 +56,13 @@ public class Message {
 
     public void setCreatedTime(LocalDateTime createdTime) {
         this.createdTime = createdTime;
+    }
+
+    public Set<Topic> getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Set<Topic> topic) {
+        this.topic = topic;
     }
 }

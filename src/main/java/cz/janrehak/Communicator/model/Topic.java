@@ -1,9 +1,6 @@
 package cz.janrehak.Communicator.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "topics")
 public class Topic {
@@ -12,8 +9,8 @@ public class Topic {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
-    private String name;
+    @Column(name = "message", length = 65536)
+    private String topicName;
 
     public Long getId() {
         return id;
@@ -23,11 +20,11 @@ public class Topic {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTopicName() {
+        return topicName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTopicName(String name) {
+        this.topicName = name;
     }
 }

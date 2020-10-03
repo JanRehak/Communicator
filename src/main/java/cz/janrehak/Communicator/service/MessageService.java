@@ -12,7 +12,8 @@ public interface MessageService {
 
 //    Message saveMessage(Message message, User user);
     Message saveMessage(Message message,  User user, Principal principal);
-    void deleteMessage(Message message, Principal principal);
+    void deleteMessage(Long id, Principal principal);
+    boolean isAdminOrAuthor(Long id, Principal principal);
 
     Iterable <Message> listAll();
 }

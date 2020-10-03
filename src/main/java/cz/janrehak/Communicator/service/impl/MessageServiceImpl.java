@@ -1,6 +1,6 @@
 package cz.janrehak.Communicator.service.impl;
 
-import cz.janrehak.Communicator.exception.BadRequestException;
+
 import cz.janrehak.Communicator.exception.NotFoundException;
 import cz.janrehak.Communicator.model.Message;
 import cz.janrehak.Communicator.repository.MessageRepository;
@@ -12,13 +12,15 @@ import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
-import java.util.Optional;
+
 
 @Service
 public class MessageServiceImpl implements MessageService {
 
-@Autowired MessageRepository messageRepository;
-@Autowired UserRepository userRepository;
+    @Autowired
+    MessageRepository messageRepository;
+    @Autowired
+    UserRepository userRepository;
 
     //theoretially the principal can be obsolid by getting the logged user from user
     @Override
@@ -30,6 +32,7 @@ public class MessageServiceImpl implements MessageService {
                         .orElseThrow(() -> new NotFoundException("Author with supplied name not found"))
         );
 
+
         //TODO if invalid input,then
 
         return messageRepository.save(message);
@@ -37,12 +40,33 @@ public class MessageServiceImpl implements MessageService {
 
 
     @Override
-    public void deleteMessage(Message message, Principal principal) {
-        messageRepository.delete(message);
+    public void deleteMessage(Long id, Principal principal) {
+
+        //if principal is admin or author -> delete message
+        if (isAdminOrAuthor(id, principal)) {
+            //delete message
+            messageRepository.delete(messageRepository.findById(id).orElseThrow(() -> new NotFoundException("User not found")));
+        }
     }
 
     @Override
     public Iterable<Message> listAll() {
         return messageRepository.findAll();
+    }
+
+    @Override
+    public boolean isAdminOrAuthor(Long id, Principal principal) {
+
+        //if principal is author of message
+        //TODO potencionalne nebezpecny nullpoint?
+        if (userRepository.findByName(principal.getName()).equals(messageRepository.findById(id).get().getAuthor())) {
+            return true;
+        }
+
+        //if principal is ADMIN
+        if (userRepository.findByName(principal.getName()).get().getRoles().contains("ADMIN")) {
+            return true;
+        }
+        else return false;
     }
 }
