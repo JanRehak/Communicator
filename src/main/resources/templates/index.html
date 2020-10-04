@@ -4,25 +4,20 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-
 <body>
-<h1>Nadpis</h1>
-<p>Text odstavce</p>
-<form method="POST" action=".">
-    <table>
-        <tr>
-            <td>Jmeno:</td>
-            <td><input type="text" name="firstname" /></td>
-        </tr>
-        <tr>
-            <td>Prijmeni:</td>
-            <td><input type="text" name="lastname" /></td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td><input type="submit" value="OK" /></td>
-        </tr>
-    </table>
-</form>
+<h1 style="color:red;">Welcome to Communicator!</h1>
+<hr>
+<hr>
+<h3>Menu</h3>
+<nav>
+    <ul>
+        <li><a href="./">Homepage</a></li>
+        <li><a href="./messages">POST A MESSAGE</a></li>
+        <li><a href="./api/messages">Read messages!</a></li>
+        <li><a href="./api/users/getLoggedUser">Logged User</a></li>
+        <li><a href="./logout">Logout</a></li>
+    </ul>
+</nav>
+
 </body>
 </html>

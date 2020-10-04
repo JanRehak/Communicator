@@ -71,18 +71,20 @@ public class MyWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter
                 .antMatchers(
                         "/*.js",
                         "/*.css",
-                        "/api/message",
+                        "/api/messages",
                         "/api/users",
-                        "/api/test"
+                        "/api/test",
+                        "/",
+                        "/messages"
                 ).permitAll()
                 .anyRequest().authenticated()
 //                .and().formLogin()
 //                    .failureUrl("login.html")
 //				    .defaultSuccessUrl("login.html")
 //				    .loginPage("login.html")
-//                .and().logout()
-//                    .logoutUrl("login.html")
-//                    .logoutSuccessUrl("/")
+                .and().logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
                 .and().httpBasic()
                 .and().cors()
                 .and().csrf().disable();

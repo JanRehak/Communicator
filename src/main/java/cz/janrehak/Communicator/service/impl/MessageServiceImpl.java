@@ -32,7 +32,6 @@ public class MessageServiceImpl implements MessageService {
                         .orElseThrow(() -> new NotFoundException("Author with supplied name not found"))
         );
 
-
         //TODO if invalid input,then
 
         return messageRepository.save(message);
@@ -44,6 +43,7 @@ public class MessageServiceImpl implements MessageService {
 
         //if principal is admin or author -> delete message
         if (isAdminOrAuthor(id, principal)) {
+
             //delete message
             messageRepository.delete(messageRepository.findById(id).orElseThrow(() -> new NotFoundException("User not found")));
         }
