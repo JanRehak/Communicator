@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="./index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Title</title>
+</head>
+
+<h3>Menu</h3>
+<nav>
+    <ul>
+        <li><a href="./">Homepage</a></li>
+        <li><a href="./messages">POST A MESSAGE</a></li>
+        <li><a href="./api/messages">Read messages!</a></li>
+        <li><a href="./api/users/getLoggedUser">Logged User</a></li>
+        <li><a href="./logout">Logout</a></li>
+    </ul>
+</nav>
+<br>
+<br>
+<body>
+<h1>Message inputer!</h1>
+<form method="POST" action=".">
+    <table>
+        <tr>
+            <td>Message</td>
+            <!-- <td><input id="messageInput" name="message" /></td> -->
+            <td>
+            <textarea rows="4" cols="60" id="messageInput" name="message" class="red-border"></textarea>
+            </td>
+        </tr>
+
+<br>
+<hr>
+<hr>
+<br>
+
+        <tr>
+            <!-- <td>&nbsp;</td> -->
+            <button type="button" onclick='storeMessage($( "#messageInput" ).val())'>Send!</button>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+
+

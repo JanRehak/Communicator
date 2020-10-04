@@ -30,8 +30,8 @@ public class MessageController {
     }
 
     @DeleteMapping("/{messageId}")
-    public void deleteMessage(@RequestBody Message message, Principal principal) {
-        messageService.deleteMessage(message, principal);
+    public void deleteMessage(@RequestBody Long id, Principal principal) {
+        messageService.deleteMessage(id, principal);
     }
 
 }

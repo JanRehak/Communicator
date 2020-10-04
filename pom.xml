@@ -11,8 +11,8 @@
 		<version>2.2.5.RELEASE</version>
 	</parent>
 
-	<groupId>com.tieto.javabootcamp</groupId>
-	<artifactId>blog</artifactId>
+	<groupId>cz.janrehak.controller</groupId>
+	<artifactId>communicator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>

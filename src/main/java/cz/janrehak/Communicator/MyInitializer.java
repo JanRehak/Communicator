@@ -30,10 +30,8 @@ public class MyInitializer implements InitializingBean {
 
     static final Random randomNumberGenerator = new Random();
 
-    @Autowired MessageService messageService;
     @Autowired UserService userService;
     @Autowired RoleRepository roleRepository;
-//    @Autowired PasswordEncoder passwordEncoder;
 
     //I get the logger that help me with the message while the app is loading
     private static final Logger log = LoggerFactory.getLogger(MyInitializer.class);
@@ -54,39 +52,28 @@ public class MyInitializer implements InitializingBean {
         roleRepository.save(adminRole);
         roleRepository.save(userRole);
 
-        //creation of message
-        Message adminMessage = new Message();
-        adminMessage.setMessage("Admin message. 111111111111111");
-        Message adminMessage2 = new Message();
-        adminMessage.setMessage("Admin 222222222222222222222222.");
-        Message adminMessage3 = new Message();
-        adminMessage.setMessage("Admin 333333333333333333333333.");
-
-
-
         //Generate admin: Magdalena if not present already
         if (!userService.isUserPresent("Magdalena")) {
             userService.createUser(new User("Magdalena", "Nova", "kozenka", roleRepository.findByName("ADMIN"),
-                    "magda"));        }
+                    "magda"));
+        }
 
-        //save Messages into dtb
-//        messageService.saveMessage(adminMessage, null, null);
+        //Generate admin: Vojta if not present already
+        if (!userService.isUserPresent("Vojta")) {
+            userService.createUser(new User("Vojta", "Orlik", "Big Boy", roleRepository.findByName("ADMIN"),
+                    "vojta"));
+        }
 
-
-        //sany
-//        userService.createUser(new User("Sany", "Bourak", "matros", roleRepository.findAll(), "sany"));
-
-
-//        for (int i = 0; i<randomNumberGenerator.nextInt(20); i++) {
-//            log.info("MATRIX IS LOADING");
-//        }
+        //Generate admin: Honza if not present already
+        if (!userService.isUserPresent("Honza")) {
+            userService.createUser(new User("Honza", "Rehak", "Olympic Lifter", roleRepository.findByName("ADMIN"),
+                    "honza"));
+        }
 
         // fetch all users
         log.info("Users found with getAllUsers():");
         log.info("-------------------------------");
         userService.getAllUsers().stream().map(User::getName).forEach(log::info);
-
-
 
 
     }
