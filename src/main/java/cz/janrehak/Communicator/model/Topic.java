@@ -6,11 +6,15 @@ import javax.persistence.*;
 public class Topic {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "topic_id_seq", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(
+            name = "topic_id_seq",
+            sequenceName = "topic_id_seq",
+            allocationSize = 50
+    )
     private Long id;
 
-    @Column(name = "topicName", length = 65536)
-    private String topicName;
+    private String name;
 
     public Long getId() {
         return id;
@@ -20,11 +24,11 @@ public class Topic {
         this.id = id;
     }
 
-    public String getTopicName() {
-        return topicName;
+    public String getName() {
+        return name;
     }
 
-    public void setTopicName(String name) {
-        this.topicName = name;
+    public void setName(String name) {
+        this.name = name;
     }
 }

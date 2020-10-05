@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 
 @RestController
-//@Secured({"ROLE_ADMIN", "ROLE_USER"})
 @RequestMapping("/api/messages")
 public class MessageController {
 
