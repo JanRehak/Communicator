@@ -9,7 +9,7 @@ public class Topic {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "message", length = 65536)
+    @Column(name = "topicName", length = 65536)
     private String topicName;
 
     public Long getId() {

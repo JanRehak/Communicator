@@ -13,8 +13,8 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "message", length = 65536)
-    private String message;
+    @Column(name = "text_content", length = 65536)
+    private String content;
 
     @ManyToOne
     @JoinColumn(name = "author")
@@ -34,12 +34,12 @@ public class Message {
         this.id = id;
     }
 
-    public String getMessage() {
-        return message;
+    public String getContent() {
+        return content;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void getContent(String content) {
+        this.content = content;
     }
 
     public User getAuthor() {
