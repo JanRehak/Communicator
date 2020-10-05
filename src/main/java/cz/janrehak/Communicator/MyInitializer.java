@@ -42,15 +42,18 @@ public class MyInitializer implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
 
-        //Creation of roles
-        Role adminRole = new Role();
-        adminRole.setName("ADMIN");
-        Role userRole = new Role();
-        userRole.setName("USER");
+        //Creation & save of roles
+        if (roleRepository.findByName("ADMIN").isEmpty()) {
+            Role adminRole = new Role();
+            adminRole.setName("ADMIN");
+            roleRepository.save(adminRole);
+        }
 
-        //Save roles into database
-        roleRepository.save(adminRole);
-        roleRepository.save(userRole);
+        if (roleRepository.findByName("USER").isEmpty()) {
+            Role userRole = new Role();
+            userRole.setName("USER");
+            roleRepository.save(userRole);
+        }
 
         //Generate admin: Magdalena if not present already
         if (!userService.isUserPresent("Magdalena")) {

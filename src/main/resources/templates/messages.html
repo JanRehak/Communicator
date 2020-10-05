@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script type="text/javascript" src="./index.js"></script>
+    <script type="text/javascript" src="./messages.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Title</title>
 </head>
@@ -25,23 +25,22 @@
     <table>
         <tr>
             <td>Message</td>
-            <!-- <td><input id="messageInput" name="message" /></td> -->
+<!--             <td><input id="messageInput" name="message" /></td>-->
             <td>
             <textarea rows="4" cols="60" id="messageInput" name="message" class="red-border"></textarea>
             </td>
         </tr>
-
-<br>
-<hr>
-<hr>
-<br>
-
         <tr>
             <!-- <td>&nbsp;</td> -->
             <button type="button" onclick='storeMessage($( "#messageInput" ).val())'>Send!</button>
         </tr>
     </table>
 </form>
+
+<table class="messages-table">
+    <tbody id="messages-list"></tbody>
+</table>
+
 </body>
 </html>
 
