@@ -4,8 +4,10 @@ package cz.janrehak.Communicator;
 import cz.janrehak.Communicator.exception.NotFoundException;
 import cz.janrehak.Communicator.model.Message;
 import cz.janrehak.Communicator.model.Role;
+import cz.janrehak.Communicator.model.Topic;
 import cz.janrehak.Communicator.model.User;
 import cz.janrehak.Communicator.repository.RoleRepository;
+import cz.janrehak.Communicator.repository.TopicRepository;
 import cz.janrehak.Communicator.service.MessageService;
 import cz.janrehak.Communicator.service.UserService;
 import org.slf4j.Logger;
@@ -32,6 +34,8 @@ public class MyInitializer implements InitializingBean {
 
     @Autowired UserService userService;
     @Autowired RoleRepository roleRepository;
+    @Autowired
+    TopicRepository topicRepository;
 
     //I get the logger that help me with the message while the app is loading
     private static final Logger log = LoggerFactory.getLogger(MyInitializer.class);
@@ -48,6 +52,11 @@ public class MyInitializer implements InitializingBean {
             adminRole.setName("ADMIN");
             roleRepository.save(adminRole);
         }
+
+        //creation of default topic
+        Topic defaultTopic = new Topic();
+        defaultTopic.setName("Default Topic");
+        topicRepository.save(defaultTopic);
 
         if (roleRepository.findByName("USER").isEmpty()) {
             Role userRole = new Role();

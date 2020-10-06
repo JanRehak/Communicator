@@ -23,12 +23,12 @@ public class Message {
     @JoinColumn(name = "author")
     private User author;
 
-    @ManyToMany
+    @ManyToOne
     @JoinTable(name="message_topic",
             joinColumns = @JoinColumn(name="message_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name="topic_id", referencedColumnName = "id")
     )
-    private Set<Topic> topic;
+    private Topic topic;
 
 
     private LocalDateTime createdTime;
@@ -65,11 +65,11 @@ public class Message {
         this.createdTime = createdTime;
     }
 
-    public Set<Topic> getTopic() {
+    public Topic getTopic() {
         return topic;
     }
 
-    public void setTopic(Set<Topic> topic) {
+    public void setTopic(Topic topic) {
         this.topic = topic;
     }
 }

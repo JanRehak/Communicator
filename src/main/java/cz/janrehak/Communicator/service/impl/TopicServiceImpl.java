@@ -1,5 +1,6 @@
 package cz.janrehak.Communicator.service.impl;
 
+import cz.janrehak.Communicator.exception.DatabaseException;
 import cz.janrehak.Communicator.model.Topic;
 import cz.janrehak.Communicator.repository.TopicRepository;
 import cz.janrehak.Communicator.service.TopicService;
@@ -16,6 +17,12 @@ public class TopicServiceImpl implements TopicService {
 
     @Override
     public Topic saveTopic(Topic topic) {
+
+        //making topic unique
+        if (topicRepository.findByName(topic.getName()).isPresent()) {
+            return topicRepository.findByName(topic.getName()).orElseThrow();
+        }
+
         return topicRepository.save(topic);
     }
 
