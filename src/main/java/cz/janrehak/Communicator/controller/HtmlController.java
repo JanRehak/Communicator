@@ -2,9 +2,6 @@ package cz.janrehak.Communicator.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 
 @Controller
 public class HtmlController {
@@ -14,14 +11,15 @@ public class HtmlController {
         return "index.html";
     }
 
+    @GetMapping("/users")
+    public String users() {
+        return "users.html";
+    }
 
-
-//    @GetMapping("/users")
-//    public String users() {
-//        return "messages.html";
-//    }
-
-
+    @GetMapping("/topics")
+    public String topics() {
+        return "topics.html";
+    }
 
     @GetMapping("/messages")
     public String messages() {

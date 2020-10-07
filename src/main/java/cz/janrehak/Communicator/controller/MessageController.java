@@ -2,6 +2,7 @@ package cz.janrehak.Communicator.controller;
 
 
 import cz.janrehak.Communicator.model.Message;
+import cz.janrehak.Communicator.model.Topic;
 import cz.janrehak.Communicator.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
@@ -11,9 +12,10 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.Optional;
+import java.util.Set;
 
 @RestController
-//@Secured({"ROLE_ADMIN", "ROLE_USER"})
 @RequestMapping("/api/messages")
 public class MessageController {
 

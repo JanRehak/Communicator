@@ -1,7 +1,5 @@
 package cz.janrehak.Communicator.model;
 
-import org.hibernate.validator.constraints.CodePointLength;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -10,7 +8,12 @@ import java.util.Set;
 public class Message {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "message_id_seq", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(
+            name = "message_id_seq",
+            sequenceName = "message_id_seq",
+            allocationSize = 50
+    )
     private Long id;
 
     @Column(name = "text_content", length = 65536)
@@ -20,8 +23,12 @@ public class Message {
     @JoinColumn(name = "author")
     private User author;
 
-    @ManyToMany
-    private Set<Topic> topic;
+    @ManyToOne
+    @JoinTable(name="message_topic",
+            joinColumns = @JoinColumn(name="message_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name="topic_id", referencedColumnName = "id")
+    )
+    private Topic topic;
 
 
     private LocalDateTime createdTime;
@@ -58,11 +65,11 @@ public class Message {
         this.createdTime = createdTime;
     }
 
-    public Set<Topic> getTopic() {
+    public Topic getTopic() {
         return topic;
     }
 
-    public void setTopic(Set<Topic> topic) {
+    public void setTopic(Topic topic) {
         this.topic = topic;
     }
 }

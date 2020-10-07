@@ -1,20 +1,18 @@
 package cz.janrehak.Communicator.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+import javax.persistence.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.List;
-import java.util.Set;
 
 @Entity(name = "roles")
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "role_id_seq", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(
+            name = "role_id_seq",
+            sequenceName = "role_id_seq",
+            allocationSize = 50
+    )
     private Long id;
 
     //TODO define FINAL roles??
