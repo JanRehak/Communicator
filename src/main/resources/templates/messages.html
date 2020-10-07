@@ -2,18 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script type="text/javascript" src="./messages.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel = "stylesheet" type = "text/css" href = "./messages.css">
+
+    <script type="text/javascript" src="./messages.js"></script>
     <title>Title</title>
 </head>
 
-<h3>Menu</h3>
 <nav>
+    <p>Communicator!</p>
     <ul>
-        <li><a href="./">Homepage</a></li>
-        <li><a href="./messages">POST A MESSAGE</a></li>
-        <li><a href="./api/users/getLoggedUser">Logged User</a></li>
-        <li><a href="./logout">Logout</a></li>
+        <li> <a href = "./">Home</a></li>
+        <li> <a href = "messages">Messages</a>
+            <ul>
+                <li><a href = "api/messages">Read API files</a></li>
+
+            </ul>
+        
+        </li>
+        <li> <a href = "topics">Topics</a></li>
+        <li> <a href = "users ">Users</a></li>
+        <li> <a href = "">Contact </a>
+            <ul>
+                <li><a href = "mailto:jan@janrehak.cz">Email</a></li>
+                <li><a href="https://www.janrehak.cz">Website</a></li>
+                <li><a href = "https://www.mordor.cz">Mordor</a></li>
+
+        </li>
+
     </ul>
 </nav>
 <br>

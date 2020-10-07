@@ -1,32 +1,123 @@
-html {
-	width: 100%;
-	height: 100%;
-	background-color: lightgray;
+* {
+    margin: 0;
+    padding: 0;
 }
+
 body {
-	width: 98vw;
-	margin: 0;
-	padding: 3vh 1vw;
-	background-color: white;
-	font-family: sans-serif;
+	/* background-image: url(img/rasta.jpg); */
+
+	background-size: cover;
 }
-@media (min-width: 918px) {
-	body {
-		width: 900px;
-		margin: 0 auto;
-	}
+
+nav {
+    width: 100%;
+    height: 60px;
+    background-color: #f3f3f3;
 }
-input.red-border[type="text"],
-textarea.red-border {
-	border: 1px dashed red;
+
+nav p{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #222;
+    font-size: 24px;
+    line-height: 55px;
+    float: left;
+    padding: 0px 20px;
+    
 }
-input.red-border[type="submit"] {
-	border: 2px solid salmon;
-	background-color: salmon;
+
+nav ul {
+    float: left;
 }
-input.red-border[type="submit"]:hover {
-	border-color: red;
-	background-color: red;
-	color: salmon;
-	font-weight: bold;
+
+nav ul li {
+    float: left;
+    list-style: none;
+    position: relative;
+}
+
+nav ul li a {
+    display: block;
+    font-family: arial;
+    color: #222;
+    font-size: 14px;
+    padding: 22px 14px;
+    text-decoration: none;
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    border-radius: 0px 0px 4px 4px;     
+}
+
+nav ul li:hover ul {
+    display: block;  
+}
+
+nav ul li ul li {
+    width: 180px;
+    border-radius: 4px; 
+}
+
+
+nav ul li ul li a{
+    padding: 8px 14px;
+}
+
+nav ul li ul li a:hover{
+background-color: #f3f3f3;
+}
+
+h1 {
+	background-color: violet;
+	align-self: flex-start;
+}
+
+table.messages-table {
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 12;
+    min-width: 800px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+table.messages-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+table.messages-table th,
+table.messages-table td {
+    padding: 12px 15px;
+}
+
+table.messages-table thead tr th.message {
+    min-width: 500px;
+    max-height: 30px;
+}
+
+table.messages-table tbody tr {
+    max-height: 30px;
+}
+
+table.messages-table tbody th {
+    max-height: 30px;
+}
+
+table.messages-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+table.messages-table tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+
+table.messages-table tbody tr:last-of-type {
+    border-bottom: 2px solid  #009879;    
 }
