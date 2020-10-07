@@ -1,6 +1,7 @@
 package cz.janrehak.Communicator.service.impl;
 
 import cz.janrehak.Communicator.exception.DatabaseException;
+import cz.janrehak.Communicator.exception.NotFoundException;
 import cz.janrehak.Communicator.model.Topic;
 import cz.janrehak.Communicator.repository.TopicRepository;
 import cz.janrehak.Communicator.service.TopicService;

@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface TopicService {
 
-
     Topic saveTopic(Topic topic);
 
     Iterable<Topic> loadTopics();

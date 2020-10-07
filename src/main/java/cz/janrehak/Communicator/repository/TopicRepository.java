@@ -11,4 +11,5 @@ public interface TopicRepository extends CrudRepository<Topic, Long> {
 
 
     Optional<Topic> findByName(String name);
+    Optional<Topic> findById(Long id);
 }

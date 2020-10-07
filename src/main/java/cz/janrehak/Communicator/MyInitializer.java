@@ -54,9 +54,11 @@ public class MyInitializer implements InitializingBean {
         }
 
         //creation of default topic
-        Topic defaultTopic = new Topic();
-        defaultTopic.setName("Default Topic");
-        topicRepository.save(defaultTopic);
+        if (topicRepository.findByName("Default Topic").isEmpty()) {
+            Topic defaultTopic = new Topic();
+            defaultTopic.setName("Default Topic");
+            topicRepository.save(defaultTopic);
+        }
 
         if (roleRepository.findByName("USER").isEmpty()) {
             Role userRole = new Role();

@@ -32,28 +32,45 @@
 
     </ul>
 </nav>
-<br>
-<br>
-<body>
+
+
+
+
 <h1>Message inputer!</h1>
-<form method="POST" action=".">
-    <table>
+<form  method="POST" action=".">
+    <table name = "postMessage">
         <tr>
-            <td>Message</td>
+            <td name = "message">Message></td>
             <td>
-            <textarea rows="4" cols="60" id="messageInput" name="message" class="red-border"></textarea>
+            <textarea rows="4" cols="60" id="messageInput" name="message" class="red-border" placeholder="insert message here"></textarea>
             </td>
-            <td>Topic</td>
-            <td>
-            <td><input id="topicInput" name="topic" /></td>
-        </td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
-            <button type="button" onclick='storeMessage($("#messageInput").val(), $("#topicInput").val())' >Send Message</button>
+            <td>Topic</td>
+            <td>
+                
+                <!-- //here the magic needs to happen
+                //roll down menu filled with topic names -->
+                <select id = "topics">
+                    
+                </select>
+                <!-- <input type="text" id="topicInput" name="topic" placeholder="insert topic here" > -->
+            
+            
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button value="refresh" type="button" onclick='storeMessage($("#messageInput").val(), 
+                                                                            $("#topics").val())' >Send Message</button>
+            </td>
         </tr>
     </table>
 </form>
+
+<select id = "topics">
+
+</select>
 
 
 
@@ -63,15 +80,32 @@
         <tr>
             <td>Topic</td>
             <td>
-            <textarea rows="4" cols="60" id="newTopicName" name="topic" class="red-border"></textarea>
+                <textarea rows="4" cols="60" id="newTopicName" name="topic" class="red-border"></textarea>
             </td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
-            <button type="button" onclick='storeTopic($("#newTopicName").val())' >Send Topic</button>
+            <td>
+                <button value="refresh" type="button" onclick='storeTopic($("#newTopicName").val())' >Send Topic</button>
+            </td>
         </tr>
     </table>
 </form>
+
+<table class="topic-table">
+    <thead>
+        <tr>
+            <th name = "topicName">Topic name</th>
+            <th index= "topicId">Topic ID</th>
+            
+        </tr>
+    </thead>
+    <tbody id = "topic-list">
+
+    </tbody>
+</table>
+
+
+
 
 
 </body>

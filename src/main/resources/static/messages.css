@@ -22,7 +22,6 @@ nav p{
     line-height: 55px;
     float: left;
     padding: 0px 20px;
-    
 }
 
 nav ul {
@@ -71,54 +70,60 @@ background-color: #f3f3f3;
 }
 
 h1 {
-	background-color: violet;
-	align-self: flex-start;
+	background-color: #f3f3f3;
+    align-self: flex-start;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 14px;
 }
 
-table.messages-table {
+table.topic-table {
 	border-collapse: collapse;
 	margin: 25px 0;
 	font-size: 12;
-    min-width: 800px;
+    min-width: 400px;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-table.messages-table thead tr {
+table.topic-table thead tr {
     background-color: #009879;
     color: #ffffff;
     text-align: left;
     font-weight: bold;
 }
 
-table.messages-table th,
-table.messages-table td {
+table.topic-table th,
+table.topic-table td {
     padding: 12px 15px;
 }
 
-table.messages-table thead tr th.message {
+table.topic-table thead tr th.message {
     min-width: 500px;
     max-height: 30px;
 }
 
-table.messages-table tbody tr {
+table.topic-table tbody tr {
     max-height: 30px;
 }
 
-table.messages-table tbody th {
+table.topic-table tbody th {
     max-height: 30px;
 }
 
-table.messages-table tbody tr {
+table.topic-table tbody tr {
     border-bottom: 1px solid #dddddd;
 }
 
-table.messages-table tbody tr:nth-of-type(even){
+table.topic-table tbody tr:nth-of-type(even){
     background-color: #f3f3f3;
 }
 
-table.messages-table tbody tr:last-of-type {
+table.topic-table tbody tr:last-of-type {
     border-bottom: 2px solid  #009879;    
 }
 
+table.postMessage tr td.message {
+    font: bold;
+    font-size: 16;
+}
