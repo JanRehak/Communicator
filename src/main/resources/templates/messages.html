@@ -3,35 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
     <link rel = "stylesheet" type = "text/css" href = "./messages.css">
 
     <script type="text/javascript" src="./messages.js"></script>
-    <title>Title</title>
+    <script type="text/javascript" src="./shared.js"></script>
+
+    <script>$(function(){
+                $("#nav-placeholder").load("nav");
+});
+    </script>
+
+    <title>Messages</title>
 </head>
 
-<nav>
-    <p>Communicator!</p>
-    <ul>
-        <li> <a href = "./">Home</a></li>
-        <li> <a href = "messages">Messages</a>
-            <ul>
-                <li><a href = "api/messages">Read API files</a></li>
-
-            </ul>
-        
-        </li>
-        <li> <a href = "topics">Topics</a></li>
-        <li> <a href = "users ">Users</a></li>
-        <li> <a href = "">Contact </a>
-            <ul>
-                <li><a href = "mailto:jan@janrehak.cz">Email</a></li>
-                <li><a href="https://www.janrehak.cz">Website</a></li>
-                <li><a href = "https://www.mordor.cz">Mordor</a></li>
-
-        </li>
-
-    </ul>
-</nav>
+<!--Navigation bar-->
+<div id="nav-placeholder"></div>
+<!--end of Navigation bar-->
 
 
 
@@ -55,54 +44,27 @@
                     
                 </select>
                 <!-- <input type="text" id="topicInput" name="topic" placeholder="insert topic here" > -->
-            
-            
+
             </td>
         </tr>
         <tr>
             <td>
-                <button value="refresh" type="button" onclick='storeMessage($("#messageInput").val(), 
-                                                                            $("#topics").val())' >Send Message</button>
+                <button value="refresh" type="button" onclick=
+                        'storeMessage($("#messageInput").val(),
+                                      $("#topics").val()),
+                                      reloadPage()' >Send Message</button>
             </td>
         </tr>
     </table>
 </form>
 
-<select id = "topics">
+<!--<select id = "topics">-->
 
-</select>
+<!--</select>-->
 
 
 
-<h1>Topic inputer!</h1>
-<form method="POST" action=".">
-    <table>
-        <tr>
-            <td>Topic</td>
-            <td>
-                <textarea rows="4" cols="60" id="newTopicName" name="topic" class="red-border"></textarea>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button value="refresh" type="button" onclick='storeTopic($("#newTopicName").val())' >Send Topic</button>
-            </td>
-        </tr>
-    </table>
-</form>
 
-<table class="topic-table">
-    <thead>
-        <tr>
-            <th name = "topicName">Topic name</th>
-            <th index= "topicId">Topic ID</th>
-            
-        </tr>
-    </thead>
-    <tbody id = "topic-list">
-
-    </tbody>
-</table>
 
 
 
