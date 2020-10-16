@@ -26,6 +26,10 @@ public class HtmlController {
         return "messages.html";
     }
 
+    @GetMapping("/nav")
+    public String nav() {
+        return "nav.html";
+    }
 
 
 }

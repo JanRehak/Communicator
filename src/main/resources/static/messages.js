@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    loadTopics();
     loadTopicsSelect();
 });
 
@@ -36,17 +35,7 @@ const storeTopic = (_name) => {
 
 
 
-const loadTopics = () => {
-    const reqt = new XMLHttpRequest();
-    reqt.addEventListener('load', () => {
-        const tableBody = document.getElementById('topic-list');
-        tableBody.innerHTML = '';
-        const messages = JSON.parse(reqt.responseText);
-        messages.forEach(topic => createRow(tableBody, topic));
-    });
-    reqt.open("GET", "./api/topics");
-    reqt.send();
-};
+
 
 const loadTopicsSelect = () => {
     console.log('test/start funkce loadTopicsSelect()');

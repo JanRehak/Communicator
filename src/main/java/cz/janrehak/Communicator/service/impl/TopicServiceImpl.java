@@ -24,6 +24,11 @@ public class TopicServiceImpl implements TopicService {
             return topicRepository.findByName(topic.getName()).orElseThrow();
         }
 
+        //topic cant be without name
+        if (topic.getName().equals("")) {
+            topic.setName("Default Topic");
+        }
+
         return topicRepository.save(topic);
     }
 

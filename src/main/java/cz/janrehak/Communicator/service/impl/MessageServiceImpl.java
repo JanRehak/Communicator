@@ -1,6 +1,7 @@
 package cz.janrehak.Communicator.service.impl;
 
 
+import cz.janrehak.Communicator.exception.BadRequestException;
 import cz.janrehak.Communicator.exception.NotFoundException;
 import cz.janrehak.Communicator.model.Message;
 import cz.janrehak.Communicator.model.Topic;
@@ -44,7 +45,6 @@ public class MessageServiceImpl implements MessageService {
 
         //if no topic selected, select default
 
-
 //        inputed topic is a topic of message / find by name
 //        message.setTopic(topicRepository.findByName(message.getTopic().getName())
 //                .orElseThrow(() -> new NotFoundException("Topic with supplied name not found")));
@@ -75,7 +75,11 @@ public class MessageServiceImpl implements MessageService {
         if (isAdminOrAuthor(id, principal)) {
 
             //delete message
-            messageRepository.delete(messageRepository.findById(id).orElseThrow(() -> new NotFoundException("User not found")));
+            messageRepository.delete(messageRepository.findById(id).orElseThrow(() -> new NotFoundException("Message by given id not found")));
+        }
+
+        if (!isAdminOrAuthor(id, principal)) {
+            throw new BadRequestException("You must be admin or author of the message to delete the message");
         }
     }
 
@@ -85,6 +89,7 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    //TODO move into userService?
     public boolean isAdminOrAuthor(Long id, Principal principal) {
 
         //if principal is author of message

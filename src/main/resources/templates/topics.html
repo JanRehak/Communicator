@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Topics</title>
+    <link rel = "stylesheet" type = "text/css" href = "./topics.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>$(function(){
+                $("#nav-placeholder").load("nav");
+});
+    </script>
+
+
+    <script type="text/javascript" src="./topics.js"></script>
+    <script type="text/javascript" src="./shared.js"></script>
+
+
+</head>
+<body>
+
+<!--Navigation bar-->
+<div id="nav-placeholder"> </div>
+<!--end of Navigation bar-->
+
+<h1>Topic inputer!</h1>
+<form method="POST" action=".">
+    <table>
+        <tr>
+            <td>Topic</td>
+            <td>
+                <textarea rows="4" cols="60" id="newTopicName" name="topic" class="red-border"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button value="refresh" type="button" onclick='storeTopic($("#newTopicName").val()), reloadPage()' >Send Topic</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<table class="topic-table">
+    <thead>
+    <tr>
+        <th name = "topicName">Topic name</th>
+        <th index= "topicId">Topic ID</th>
+
+    </tr>
+    </thead>
+    <tbody id = "topic-list">
+
+    </tbody>
+</table>
+
+</body>
+</html>

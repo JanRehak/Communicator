@@ -17,23 +17,20 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-//@Secured({"ROLE_ADMIN", "ROLE_USER"})
+@Secured({"ROLE_ADMIN", "ROLE_USER"})
 @RequestMapping("/api/users")
 public class UserController {
 
-
-    private final UserService userService;
+    @Autowired
+    UserService userService;
 
     @GetMapping()
     public List<User> getUsers() {
         return userService.getAllUsers();
     }
 
-    public UserController(@Autowired UserService userService) {
-        this.userService = userService;
-    }
-
     @PostMapping()
+    @Secured({"ROLE_ADMIN"})
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
     }

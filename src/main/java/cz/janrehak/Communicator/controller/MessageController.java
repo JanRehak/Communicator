@@ -12,8 +12,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.Optional;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api/messages")
@@ -32,6 +30,7 @@ public class MessageController {
     }
 
     @DeleteMapping("/{messageId}")
+    @Secured({"ROLE_ADMIN"})
     public void deleteMessage(@RequestBody Long id, Principal principal) {
         messageService.deleteMessage(id, principal);
     }

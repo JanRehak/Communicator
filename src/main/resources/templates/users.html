@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Topics</title>
+    <link rel = "stylesheet" type = "text/css" href = "./users.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>$(function(){
+                $("#nav-placeholder").load("nav");
+});
+    </script>
+
+
+    <script type="text/javascript" src="./users.js"></script>
+    <script type="text/javascript" src="./shared.js"></script>
+
+
+</head>
+<body>
+<!--Navigation bar-->
+<div id="nav-placeholder"> </div>
+<!--end of Navigation bar-->
+
+
+
+<table class="users-table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th index= "message">Last name</th>
+        <th>Street name</th>
+        <th>Role</th>
+        <th>Id</th>
+    </tr>
+    </thead>
+    <tbody id = "users-list">
+
+    </tbody>
+</table>
+
+<form name="addUser">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" name="name" class="red-border" /></td>
+        </tr>
+        <tr>
+            <td>Last Name:</td>
+            <td><input type="text" name="lastName" class="red-border" /></td>
+        </tr>
+        <tr>
+            <td>Street Name:</td>
+            <td><input type="text" name="streetName" class="red-border" /></td>
+        </tr>
+        <tr>
+            <td>Heslo:</td>
+            <td><input type="password" name="password" class="red-border" /></td>
+        </tr>
+        <tr>
+            <td>Role:</td>
+            <td>
+                <select multiple="multiple" name="roles" id="role-selector"></select>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><input type="submit" value="OK" class="red-border" /></td>
+        </tr>
+    </table>
+</form>
+
+
+</body>
+</html>
